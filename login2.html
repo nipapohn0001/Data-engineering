@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - User/Admin</title>
     <style>
+        /* Your existing styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,7 +22,7 @@
         .container {
             width: 100%;
             max-width: 400px;
-            padding: 100px;
+            padding: 40px;
             background-color: #ffffff;
             border-radius: 12px;
             box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
@@ -115,7 +116,7 @@
             Admin
         </div>
     </div>
-    <form>
+    <form id="loginForm" onsubmit="return handleLogin(event)">
         <div class="input-group">
             <label for="email">Email</label>
             <input type="email" id="email" placeholder="Type your Email" required>
@@ -137,6 +138,23 @@
         element.classList.add('selected');
         selectedRole = role;
         console.log("Selected Role:", selectedRole);
+    }
+
+    function handleLogin(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+            // Redirect based on selected role
+            if (selectedRole === 'user') {
+                window.location.href = 'book-list-user.html';
+            } else if (selectedRole === 'admin') {
+                window.location.href = 'book-list-admin.html';
+            }
+        } else {
+            alert("Please enter your email and password.");
+        }
     }
 </script>
 
