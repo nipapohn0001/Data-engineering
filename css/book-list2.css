@@ -1,0 +1,97 @@
+/* ตั้งค่าพื้นฐาน */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+  }
+  
+  nav .logo {
+    font-size: 24px;
+  }
+  
+  nav .sidebar {
+    margin-top: 20px;
+  }
+  
+  nav .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  nav .sidebar ul li {
+    margin: 10px 0;
+  }
+  
+  nav .sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px 16px;
+  }
+  
+  nav .sidebar ul li a:hover {
+    background-color: #575757;
+  }
+  
+  /* ส่วนของการแสดงรายการหนังสือ */
+  .container {
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* ตารางหนังสือ */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  table th, table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  table th {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  button {
+    background-color: #008CBA;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #007B9E;
+  }
+  

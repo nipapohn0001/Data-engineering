@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book List</title>
+  <link rel="stylesheet" href="/css/book-list2.css">
+</head>
+
+<body>
+  <!-- <nav>
+    <div class="logo">
+      <span class="logo-name">Library System</span>
+    </div>
+    <div class="sidebar">
+      <ul>
+        <li><a href="add-book.html">Add Book</a></li>
+        <li><a href="book-list.html">Book List</a></li>
+        <li><a href="borrow-history.html">Borrow History</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+  <div class="container">
+    <h1>Book List</h1>
+
+    <!-- ปุ่มเพิ่มหนังสือ -->
+    <button id="addBookButton" onclick="location.href='add-book.html'">Add New Book</button>
+
+    <!-- ตารางแสดงรายชื่อหนังสือ -->
+    <table>
+      <thead>
+        <tr>
+          <th>Book Code</th>
+          <th>Book Name</th>
+          <th>Author</th>
+          <th>Subject</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>001</td>
+          <td>Harry Potter and the Sorcerer's Stone</td>
+          <td>J.K. Rowling</td>
+          <td>Fantasy</td>
+          <td><button onclick="viewBookDetails(1)">View</button></td>
+        </tr>
+        <tr>
+          <td>002</td>
+          <td>To Kill a Mockingbird</td>
+          <td>Harper Lee</td>
+          <td>Fiction</td>
+          <td><button onclick="viewBookDetails(2)">View</button></td>
+        </tr>
+        <tr>
+          <td>003</td>
+          <td>The Great Gatsby</td>
+          <td>F. Scott Fitzgerald</td>
+          <td>Classic</td>
+          <td><button onclick="viewBookDetails(3)">View</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/js/book-list2.js"></script>
+</body>
+
+</html>

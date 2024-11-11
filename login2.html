@@ -148,9 +148,9 @@
         if (email && password) {
             // Redirect based on selected role
             if (selectedRole === 'user') {
-                window.location.href = 'book-list-user.html';
+                window.location.href = '/User/book-list-user.html';
             } else if (selectedRole === 'admin') {
-                window.location.href = 'book-list-admin.html';
+                window.location.href = '/Admin/book-list-admin.html';
             }
         } else {
             alert("Please enter your email and password.");
