@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overdue Books</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #4070f4;
+            color: #fff;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Overdue Books</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Book Title</th>
+                <th>Borrower</th>
+                <th>Due Date</th>
+                <th>Days Overdue</th>
+                <th>Fine</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Advanced Python Programming</td>
+                <td>John Doe</td>
+                <td>2023-10-05</td>
+                <td>15</td>
+                <td>$7.50</td>
+            </tr>
+            <tr>
+                <td>Database Management</td>
+                <td>Jane Smith</td>
+                <td>2023-09-25</td>
+                <td>25</td>
+                <td>$12.50</td>
+            </tr>
+            <tr>
+                <td>Network Security Essentials</td>
+                <td>Emily Johnson</td>
+                <td>2023-10-10</td>
+                <td>10</td>
+                <td>$5.00</td>
+            </tr>
+            <!-- Add more overdue books here -->
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
