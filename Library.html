@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบการจัดการห้องสมุด</title>
+    <style>
+        /* เริ่มต้น CSS */
+        body { font-family: Arial, sans-serif; }
+        
+        /* สไตล์สำหรับ Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+        
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+        button { margin-top: 10px; }
+        /* จบ CSS */
+    </style>
+</head>
+<body>
+
+    <!-- เริ่มต้น Navbar -->
+    <nav class="navbar">
+        <a href="#addBookSection">เพิ่มหนังสือ</a>
+        <a href="#booksTableSection">รายการหนังสือ</a>
+        <a href="#historySection">ประวัติการยืม</a>
+    </nav>
+    <!-- จบ Navbar -->
+
+    <div class="container">
+        <h1>ระบบการจัดการห้องสมุด</h1>
+        
+        <!-- ส่วนเพิ่มหนังสือ -->
+        <section id="addBookSection">
+            <h2>เพิ่มหนังสือ</h2>
+            <label>ชื่อหนังสือ: <input type="text" id="bookTitle"></label><br>
+            <label>ผู้แต่ง: <input type="text" id="bookAuthor"></label><br>
+            <button onclick="addBook()">เพิ่มหนังสือ</button>
+        </section>
+        
+        <!-- ตารางรายการหนังสือ -->
+        <section id="booksTableSection">
+            <h2>รายการหนังสือ</h2>
+            <table id="booksTable">
+                <thead>
+                    <tr>
+                        <th>ชื่อหนังสือ</th>
+                        <th>ผู้แต่ง</th>
+                        <th>สถานะ</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+        
+        <!-- ประวัติการยืม -->
+        <section id="historySection">
+            <h2>ประวัติการยืม</h2>
+            <ul id="history"></ul>
+        </section>
+    </div>
+
+    <script>
+        // โค้ด JavaScript เหมือนเดิม
+        let books = [];
+        let history = [];
+
+        function addBook() {
+            const title = document.getElementById('bookTitle').value;
+            const author = document.getElementById('bookAuthor').value;
+
+            if (title && author) {
+                books.push({ title, author, status: 'ว่าง' });
+                document.getElementById('bookTitle').value = '';
+                document.getElementById('bookAuthor').value = '';
+                displayBooks();
+            } else {
+                alert('กรุณากรอกข้อมูลให้ครบ');
+            }
+        }
+
+        function displayBooks() {
+            const tbody = document.getElementById('booksTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            
+            books.forEach((book, index) => {
+                const row = tbody.insertRow();
+                
+                row.insertCell(0).innerText = book.title;
+                row.insertCell(1).innerText = book.author;
+                row.insertCell(2).innerText = book.status;
+
+                const actions = row.insertCell(3);
+                if (book.status === 'ว่าง') {
+                    const borrowButton = document.createElement('button');
+                    borrowButton.innerText = 'ยืม';
+                    borrowButton.onclick = () => borrowBook(index);
+                    actions.appendChild(borrowButton);
+                } else {
+                    const returnButton = document.createElement('button');
+                    returnButton.innerText = 'คืน';
+                    returnButton.onclick = () => returnBook(index);
+                    actions.appendChild(returnButton);
+                }
+            });
+        }
+
+        function borrowBook(index) {
+            if (books[index].status === 'ว่าง') {
+                books[index].status = 'ถูกยืม';
+                history.push(`ยืม: ${books[index].title} โดย ${books[index].author}`);
+                displayBooks();
+                displayHistory();
+            }
+        }
+
+        function returnBook(index) {
+            if (books[index].status === 'ถูกยืม') {
+                books[index].status = 'ว่าง';
+                history.push(`คืน: ${books[index].title} โดย ${books[index].author}`);
+                displayBooks();
+                displayHistory();
+            }
+        }
+
+        function displayHistory() {
+            const historyList = document.getElementById('history');
+            historyList.innerHTML = '';
+            history.forEach(record => {
+                const li = document.createElement('li');
+                li.innerText = record;
+                historyList.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
