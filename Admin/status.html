@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถานะการยืม/คืนหนังสือ</title>
+    <style>
+        /* CSS สำหรับ Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 1rem;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+        .navbar a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+
+        /* CSS สำหรับตาราง */
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table, th, td { border: 1px solid black; }
+        th, td { padding: 10px; text-align: left; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html">หน้าหลัก</a>
+        <a href="add-book.html">เพิ่มหนังสือ</a>
+        <a href="books-list.html">รายการหนังสือ</a>
+        <a href="borrow-history.html">ประวัติการยืม</a>
+        <a href="borrow-status.html">สถานะการยืม/คืน</a>
+    </nav>
+
+    <!-- เนื้อหาสถานะการยืม/คืนหนังสือ -->
+    <div class="container">
+        <h1>สถานะการยืม/คืนหนังสือ</h1>
+        <table id="statusTable">
+            <thead>
+                <tr>
+                    <th>ชื่อหนังสือ</th>
+                    <th>ผู้ยืม</th>
+                    <th>สถานะ</th>
+                    <th>วันที่ยืม</th>
+                    <th>วันที่คืน</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- รายการข้อมูลจะถูกเพิ่มโดย JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // ตัวอย่างข้อมูลสถานะการยืม/คืน
+        const borrowStatusData = [
+            { title: "หนังสือ A", borrower: "สมชาย", status: "ยืม", borrowDate: "2024-10-01", returnDate: "" },
+            { title: "หนังสือ B", borrower: "สมหญิง", status: "คืน", borrowDate: "2024-09-20", returnDate: "2024-10-05" },
+            { title: "หนังสือ C", borrower: "สมปอง", status: "ยืม", borrowDate: "2024-11-01", returnDate: "" },
+        ];
+
+        // ฟังก์ชันแสดงสถานะการยืม/คืน
+        function displayBorrowStatus() {
+            const tbody = document.getElementById('statusTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = '';
+            
+            borrowStatusData.forEach((record) => {
+                const row = tbody.insertRow();
+                
+                row.insertCell(0).innerText = record.title;
+                row.insertCell(1).innerText = record.borrower;
+                row.insertCell(2).innerText = record.status;
+                row.insertCell(3).innerText = record.borrowDate;
+                row.insertCell(4).innerText = record.returnDate || '-';
+            });
+        }
+
+        // เรียกฟังก์ชันแสดงข้อมูลเมื่อโหลดหน้า
+        displayBorrowStatus();
+    </script>
+</body>
+</html>
