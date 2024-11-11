@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve a Book</title>
+    <link rel="stylesheet" href="reserve.css"> <!-- You can create a separate CSS file for styling -->
+</head>
+<body>
+
+    <section class="reserve-form">
+        <h1>Reserve a Book</h1>
+        <form action="submit_reservation" method="POST"> <!-- Replace with your back-end logic -->
+            <div>
+                <label for="borrower_id">Borrower ID:</label>
+                <input type="text" id="borrower_id" name="borrower_id" required>
+            </div>
+            <div>
+                <label for="fullname_borrower">Full Name:</label>
+                <input type="text" id="fullname_borrower" name="fullname_borrower" required>
+            </div>
+            <div>
+                <label for="booktitle">Book Title:</label>
+                <input type="text" id="booktitle" name="booktitle" required>
+            </div>
+            <div>
+                <label for="book_id">Book ID:</label>
+                <input type="text" id="book_id" name="book_id" required>
+            </div>
+            <div>
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+            <div>
+                <label for="dateborrowed">Date Borrowed:</label>
+                <input type="date" id="dateborrowed" name="dateborrowed" required>
+            </div>
+            <div>
+                <label for="duedatereturned">Due Date (Return):</label>
+                <input type="date" id="duedatereturned" name="duedatereturned" required>
+            </div>
+            <button type="submit">Reserve Book</button>
+        </form>
+    </section>
+
+</body>
+</html>
