@@ -36,8 +36,11 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    float: right;
 }
 
 button:hover {
     background-color: #45a049;
 }
+
+
