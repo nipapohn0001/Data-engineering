@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - User/Admin</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        body, html {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+        }
+        .container {
+            width: 100%;
+            max-width: 400px;
+            padding: 100px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .role-selection {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        .role {
+            cursor: pointer;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #555;
+            border: 2px solid #ddd;
+            width: 48%;
+            transition: 0.3s;
+        }
+        .role.selected {
+            border-color: #a8edea;
+            color: #a8edea;
+            background-color: #f0f9f9;
+        }
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: 0.3s;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #a8edea;
+            box-shadow: 0 0 8px rgba(168, 237, 234, 0.5);
+        }
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #a8edea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #92d3d1;
+        }
+        .forgot-password {
+            display: block;
+            margin-top: 20px;
+            color: #777;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .forgot-password:hover {
+            color: #a8edea;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Login</h2>
+    <p>Select your role</p>
+    <div class="role-selection">
+        <div class="role selected" onclick="selectRole(this, 'user')">
+            User
+        </div>
+        <div class="role" onclick="selectRole(this, 'admin')">
+            Admin
+        </div>
+    </div>
+    <form>
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Type your Email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Type your password" required>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+    <a href="#" class="forgot-password">Forgot your password?</a>
+</div>
+
+<script>
+    let selectedRole = 'user';
+
+    function selectRole(element, role) {
+        document.querySelectorAll('.role').forEach(roleElem => roleElem.classList.remove('selected'));
+        element.classList.add('selected');
+        selectedRole = role;
+        console.log("Selected Role:", selectedRole);
+    }
+</script>
+
+</body>
+</html>
