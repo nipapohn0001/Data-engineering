@@ -1,50 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Reservation</title>
     <link rel="stylesheet" href="reserve.css">
 </head>
+
 <body>
     <div class="container">
         <h2>Reserve a Book</h2>
-        <form action="/submit-reservation" method="POST">
-            <label for="book-code">Book Code:</label>
-            <input type="text" id="book-code" name="book-code" required>
+        <form action="submit-reservation" method="POST">
+            <label for="book-id">Book ID:</label>
+            <input type="text" id="book-id" name="book-id" required>
 
-            <label for="book-name">Book Name:</label>
-            <input type="text" id="book-name" name="book-name" required>
+            <label for="book-title">Book Title:</label>
+            <input type="text" id="book-title" name="book-title" required>
 
             <label for="author-name">Author Name:</label>
-            <input type="text" id="author-name" name="author-name" required>
+            <input type="text" id="author-name" name="author-name" rfequired>
 
-            <label for="user-name">Your Name:</label>
-            <input type="text" id="user-name" name="user-name" required>
+            <label for="borrower_id">Book ID:</label>
+            <input type="text" id="borrower_id" name="borrower_id" required>
 
-            <label for="reservation-date">Reservation Date:</label>
-            <input type="date" id="reservation-date" name="reservation-date" required>
+            <label for="fullname_borrower">Full Name:</label>
+            <input type="text" id="fullname_borrower" name="fullname_borrower" required>
 
-            <label for="reservation-time">Reservation Time:</label>
-            <input type="time" id="reservation-time" name="reservation-time" required>
+            <label for="date-borrowed">Reservation Date:</label>
+            <input type="date" id="date-borrowed" name="date-borrowed" required>
+
+            <label for="duedate-returned">Returned Date:</label>
+            <input type="date" id="duedate-returned" name="duedate-returned" required>
 
             <button type="submit">Reserve Now</button>
         </form>
     </div>
+    <script>
+        function saveReservation() {
+            // Get form values
+            const borrower_id = document.getElementById('borrower_id').value;
+            const fullname_borrower = document.getElementById('fullname_borrower').value;
+            const booktitle = document.getElementById('booktitle').value;
+            const book_id = document.getElementById('book_id').value;
+            const author = document.getElementById('author').value;
+            const dateborrowed = document.getElementById('dateborrowed').value;
+            const duedatereturned = document.getElementById('duedatereturned').value;
+
+            // Create an object to store
+            const reservation = {
+                borrower_id,
+                fullname_borrower,
+                booktitle,
+                book_id,
+                author,
+                dateborrowed,
+                duedatereturned
+            };
+
+            // Save to LocalStorage
+            let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+            reservations.push(reservation);
+            localStorage.setItem('reservations', JSON.stringify(reservations));
+
+            alert('Reservation Saved!');
+            // Optionally, reset the form or redirect
+            document.getElementById('reserve-form').reset();
+        }
+    </script>
 
     <script>
-        // Function to set the current date and time
-        window.onload = function() {
-            const now = new Date();
+        document.querySelector('form').addEventListener('submit', function (event) {
+            event.preventDefault();  // Prevent the default form submission
 
-            // Set current date in YYYY-MM-DD format
-            const dateField = document.getElementById('reservation-date');
-            dateField.value = now.toISOString().split('T')[0];
+            // Get form values
+            const borrower_id = document.getElementById('borrower_id').value;
+            const fullname_borrower = document.getElementById('fullname_borrower').value;
+            const book_title = document.getElementById('book-title').value;
+            const book_id = document.getElementById('book-id').value;
+            const author_name = document.getElementById('author-name').value;
+            const date_borrowed = document.getElementById('date-borrowed').value;
+            const due_date_returned = document.getElementById('duedate-returned').value;
 
-            // Set current time in HH:MM format
-            const timeField = document.getElementById('reservation-time');
-            timeField.value = now.toTimeString().slice(0, 5);
-        };
+            // Create the data object
+            const reservationData = {
+                borrower_id,
+                fullname_borrower,
+                book_id,
+                book_title,
+                author_name,
+                date_borrowed,
+                due_date_returned
+            };
+
+            // Send data to the server using fetch API
+            fetch('http://localhost:3000/submit-reservation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(reservationData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Reservation saved successfully!');
+                    document.querySelector('form').reset();
+                })
+                .catch(error => {
+                    alert('Error saving reservation!');
+                    console.error('Error:', error);
+                });
+        });
+
     </script>
+
 </body>
+
 </html>

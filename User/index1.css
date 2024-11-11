@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f3e9e0;
+    color: #1e3932;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #1e3932;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #00704a;
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px;
+    background-color: #d4b99a;
+}
+
+.hero-text h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #1e3932;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    color: #00704a;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+.hero-text p {
+    font-size: 24px;
+    color: #1e3932;
+    margin: 10px 0 20px;
+}
+
+.join-btn {
+    padding: 10px 20px;
+    border: 2px solid #1e3932;
+    background: none;
+    font-size: 16px;
+    color: #1e3932;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.join-btn:hover {
+    background-color: #1e3932;
+    color: #fff;
+}
+
+.hero-image {
+    display: flex;
+    gap: 20px;
+}
+
+.hero-image img {
+    width: 200px;
+    border-radius: 10px;
+}
+
+.recommended-books {
+    padding: 60px 80px;
+    background-color: #f7f3ef;
+    color: #1e3932;
+    text-align: center;
+}
+
+.recommended-books h2 {
+    font-size: 36px;
+    color: #00704a;
+    margin-bottom: 40px;
+}
+
+.book-list {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.book {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.book img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.book h4 {
+    font-size: 18px;
+    color: #1e3932;
+    margin-bottom: 8px;
+}
+
+.book p {
+    font-size: 16px;
+    color: #555;
+}
+
+.book:hover {
+    transform: scale(1.05);
+}
+
+body {
+    background-image: url('/User/img/123.jpg');
+    background-size: cover; /* ให้ภาพขยายให้เต็มหน้าจอ */
+    background-position: center; /* จัดตำแหน่งภาพให้ตรงกลาง */
+    background-attachment: fixed; /* ทำให้ภาพพื้นหลังไม่เลื่อนตามการเลื่อนหน้าจอ */
+}
+
