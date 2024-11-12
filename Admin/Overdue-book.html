@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +16,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .container {
             max-width: 900px;
             width: 100%;
@@ -23,70 +25,177 @@
             border-radius: 10px;
             box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             text-align: center;
             color: #333;
             margin-bottom: 20px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 0 auto;
         }
-        th, td {
+
+        th,
+        td {
             padding: 12px;
             border: 1px solid #ddd;
             text-align: left;
         }
+
         th {
             background-color: #4070f4;
             color: #fff;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <h2>Overdue Books</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Book Title</th>
-                <th>Borrower</th>
-                <th>Due Date</th>
-                <th>Days Overdue</th>
-                <th>Fine</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Advanced Python Programming</td>
-                <td>John Doe</td>
-                <td>2023-10-05</td>
-                <td>15</td>
-                <td>$7.50</td>
-            </tr>
-            <tr>
-                <td>Database Management</td>
-                <td>Jane Smith</td>
-                <td>2023-09-25</td>
-                <td>25</td>
-                <td>$12.50</td>
-            </tr>
-            <tr>
-                <td>Network Security Essentials</td>
-                <td>Emily Johnson</td>
-                <td>2023-10-10</td>
-                <td>10</td>
-                <td>$5.00</td>
-            </tr>
-            <!-- Add more overdue books here -->
-        </tbody>
-    </table>
-</div>
+    <nav>
+        <!DOCTYPE html>
+        <!-- Coding By CodingNepal - codingnepalweb.com -->
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Sidebar Menu | Side Navigation Bar</title>
+            <!-- CSS -->
+            <link rel="stylesheet" href="/css/navbar.css" />
+            <!-- Boxicons CSS -->
+            <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+        </head>
+
+        <body>
+            <nav>
+                <div class="logo">
+                    <i class="bx bx-menu menu-icon"></i>
+                    <span class="logo-name">Library Management System</span>
+                </div>
+                <div class="sidebar">
+                    <div class="logo">
+                        <i class="bx bx-menu menu-icon"></i>
+                        <span class="logo-name"></span>
+                    </div>
+
+                    <div class="sidebar-content">
+                        <ul class="lists">
+                            <li class="list">
+                                <a href="/User/book-list.html" class="nav-link">
+                                    <i class="bx bx-home-alt icon"></i>
+                                    <span class="link">Book List</span>
+                                </a>
+                            </li>
+                            <li class="list">
+                                <a href="/Admin/add-book.html" class="nav-link">
+                                    <i class="bx bx-bar-chart-alt-2 icon"></i>
+                                    <span class="link">Add Book</span>
+                                </a>
+                            </li>
+                            <li class="list">
+                                <a href="/Admin/Overdue-book.html" class="nav-link">
+                                    <i class="bx bx-bell icon"></i>
+                                    <span class="link">Overdue book</span>
+                                </a>
+                            </li>
+                            <li class="list">
+                                <a href="/Admin/status.html" class="nav-link">
+                                    <i class="bx bx-message-rounded icon"></i>
+                                    <span class="link">Status</span>
+                                </a>
+                            </li>
+                            <li class="list">
+                                <a href="/history.html" class="nav-link">
+                                    <i class="bx bx-pie-chart-alt-2 icon"></i>
+                                    <span class="link">History</span>
+                                </a>
+                            </li>
+                            <!-- <li class="list">
+              <a href="#" class="nav-link">
+                <i class="bx bx-heart icon"></i>
+                <span class="link">Likes</span>
+              </a>
+            </li>
+            <li class="list">
+              <a href="#" class="nav-link">
+                <i class="bx bx-folder-open icon"></i>
+                <span class="link">Files</span>
+              </a>
+            </li> -->
+                        </ul>
+
+                        <div class="bottom-cotent">
+                            <!-- <li class="list">
+              <a href="#" class="nav-link">
+                <i class="bx bx-cog icon"></i>
+                <span class="link">Settings</span>
+              </a>
+            </li> -->
+                            <li class="list">
+                                <a href="/login2.html" class="nav-link">
+                                    <i class="bx bx-log-out icon"></i>
+                                    <span class="link">Logout</span>
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <section class="overlay"></section>
+
+            <script src="/js/navbar.js"></script>
+        </body>
+
+        </html>
+    </nav>
+    <div class="container">
+        <h2>Overdue Books</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Borrower</th>
+                    <th>Due Date</th>
+                    <th>Days Overdue</th>
+                    <th>Fine</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Advanced Python Programming</td>
+                    <td>John Doe</td>
+                    <td>2023-10-05</td>
+                    <td>15</td>
+                    <td>$7.50</td>
+                </tr>
+                <tr>
+                    <td>Database Management</td>
+                    <td>Jane Smith</td>
+                    <td>2023-09-25</td>
+                    <td>25</td>
+                    <td>$12.50</td>
+                </tr>
+                <tr>
+                    <td>Network Security Essentials</td>
+                    <td>Emily Johnson</td>
+                    <td>2023-10-10</td>
+                    <td>10</td>
+                    <td>$5.00</td>
+                </tr>
+                <!-- Add more overdue books here -->
+            </tbody>
+        </table>
+    </div>
 
 </body>
+
 </html>
