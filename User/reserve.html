@@ -11,27 +11,27 @@
 <body>
     <div class="container">
         <h2>Reserve a Book</h2>
-        <form action="submit-reservation" method="POST">
-            <label for="book-id">Borrower ID:</label>
-            <input type="text" id="book-id" name="book-id" required>
-
-            <label for="book-title">Full Name:</label>
-            <input type="text" id="book-title" name="book-title" required>
-
-            <label for="author-name">Book Title:</label>
-            <input type="text" id="author-name" name="author-name" rfequired>
-
-            <label for="borrower_id">Book ID:</label>
+        <form id="reservationForm" action="submit-reservation" method="POST">
+            <label for="borrower_id">Borrower ID:</label>
             <input type="text" id="borrower_id" name="borrower_id" required>
 
-            <label for="fullname_borrower">Author:</label>
+            <label for="fullname_borrower">Full Name:</label>
             <input type="text" id="fullname_borrower" name="fullname_borrower" required>
 
-            <label for="date-borrowed">Reservation Date:</label>
-            <input type="date" id="date-borrowed" name="date-borrowed" required>
+            <label for="book_title">Book Title:</label>
+            <input type="text" id="book_title" name="book_title" required>
 
-            <label for="duedate-returned">Returned Date:</label>
-            <input type="date" id="duedate-returned" name="duedate-returned" required>
+            <label for="book_id">Book ID:</label>
+            <input type="text" id="book_id" name="book_id" required>
+
+            <label for="author_name">Author:</label>
+            <input type="text" id="author_name" name="author_name" required>
+
+            <label for="date_borrowed">Reservation Date:</label>
+            <input type="date" id="date_borrowed" name="date_borrowed" required>
+
+            <label for="due_date_returned">Returned Date:</label>
+            <input type="date" id="due_date_returned" name="due_date_returned" required>
 
             <button type="submit">Reserve Now</button>
         </form>
@@ -40,45 +40,46 @@
     <script>
         const form = document.getElementById('reservationForm');
         form.addEventListener('submit', async (event) => {
-          event.preventDefault();
-    
-          const borrower_id = document.getElementById('borrower_id').value;
-          const fullname_borrower = document.getElementById('fullname_borrower').value;
-          const book_title = document.getElementById('book_title').value;
-          const book_id = document.getElementById('book_id').value;
-          const author_name = document.getElementById('author_name').value;
-          const date_borrowed = document.getElementById('date_borrowed').value;
-          const due_date_returned = document.getElementById('due_date_returned').value;
-    
-          try {
-            const response = await fetch('/submit-reservation', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                borrower_id,
-                fullname_borrower,
-                book_title,
-                book_id,
-                author_name,
-                date_borrowed,
-                due_date_returned
-              })
-            });
-    
-            if (response.ok) {
-              alert('Reservation saved successfully!');
-              form.reset();
-            } else {
-              alert('Error saving reservation. Please try again.');
+            event.preventDefault();
+
+            const borrower_id = document.getElementById('borrower_id').value;
+            const fullname_borrower = document.getElementById('fullname_borrower').value;
+            const book_title = document.getElementById('book_title').value;
+            const book_id = document.getElementById('book_id').value;
+            const author_name = document.getElementById('author_name').value;
+            const date_borrowed = document.getElementById('date_borrowed').value;
+            const due_date_returned = document.getElementById('due_date_returned').value;
+
+            try {
+                const response = await fetch('/submit-reservation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        borrower_id,
+                        fullname_borrower,
+                        book_title,
+                        book_id,
+                        author_name,
+                        date_borrowed,
+                        due_date_returned
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Reservation saved successfully!');
+                    form.reset();
+                } else {
+                    alert('Error saving reservation. Please try again.');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
             }
-          } catch (error) {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again later.');
-          }
         });
-      </script>
+    </script>
 
 </body>
 
