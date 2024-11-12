@@ -3,45 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reserve a Book</title>
-    <link rel="stylesheet" href="reserve.css"> <!-- You can create a separate CSS file for styling -->
+    <title>Library Book Stock</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        /* Search Box Styling */
+        .search-box {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-box input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .search-box button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 4px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        .search-box button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .no-results {
+            text-align: center;
+            color: #888;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-    <section class="reserve-form">
-        <h1>Reserve a Book</h1>
-        <form action="submit_reservation" method="POST"> <!-- Replace with your back-end logic -->
-            <div>
-                <label for="borrower_id">Borrower ID:</label>
-                <input type="text" id="borrower_id" name="borrower_id" required>
-            </div>
-            <div>
-                <label for="fullname_borrower">Full Name:</label>
-                <input type="text" id="fullname_borrower" name="fullname_borrower" required>
-            </div>
-            <div>
-                <label for="booktitle">Book Title:</label>
-                <input type="text" id="booktitle" name="booktitle" required>
-            </div>
-            <div>
-                <label for="book_id">Book ID:</label>
-                <input type="text" id="book_id" name="book_id" required>
-            </div>
-            <div>
-                <label for="author">Author:</label>
-                <input type="text" id="author" name="author" required>
-            </div>
-            <div>
-                <label for="dateborrowed">Date Borrowed:</label>
-                <input type="date" id="dateborrowed" name="dateborrowed" required>
-            </div>
-            <div>
-                <label for="duedatereturned">Due Date (Return):</label>
-                <input type="date" id="duedatereturned" name="duedatereturned" required>
-            </div>
-            <button type="submit">Reserve Book</button>
-        </form>
-    </section>
+<div class="container">
+    <h1>Library Book Stock</h1>
+
+    <!-- Search Box -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for a book by title...">
+        <button onclick="searchBook()">Search</button>
+    </div>
+
+    <!-- Book Stock Table -->
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample Data Rows -->
+            <tr>
+                <td>001</td>
+                <td>The Great Gatsby</td>
+                <td>F. Scott Fitzgerald</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>To Kill a Mockingbird</td>
+                <td>Harper Lee</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>003</td>
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>004</td>
+                <td>Pride and Prejudice</td>
+                <td>Jane Austen</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>005</td>
+                <td>The Catcher in the Rye</td>
+                <td>J.D. Salinger</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>006</td>
+                <td>Harry Potter and the Sorcerer's Stone</td>
+                <td>J.K. Rowling</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>007</td>
+                <td>The Hobbit</td>
+                <td>J.R.R. Tolkien</td>
+                <td>2</td>
+            </tr>
+            <tr>
+                <td>008</td>
+                <td>Animal Farm</td>
+                <td>George Orwell</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>009</td>
+                <td>Lord of the Flies</td>
+                <td>William Golding</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>010</td>
+                <td>Moby-Dick</td>
+                <td>Herman Melville</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>011</td>
+                <td>War and Peace</td>
+                <td>Leo Tolstoy</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>012</td>
+                <td>Jane Eyre</td>
+                <td>Charlotte Brontë</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>013</td>
+                <td>The Little Prince</td>
+                <td>Antoine de Saint-Exupéry</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>014</td>
+                <td>Murder on the Orient Express</td>
+                <td>Agatha Christie</td>
+                <td>7</td>
+            </tr>
+            <tr>
+                <td>015</td>
+                <td>Harry Potter and the Half-Blood Prince</td>
+                <td>J. K. Rowling</td>
+                <td>2</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="no-results" id="noResults" style="display: none;">No results found</div>
+</div>
+
+<script>
+    function searchBook() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let table = document.getElementById('bookTable');
+        let tr = table.getElementsByTagName('tr');
+        let noResults = document.getElementById('noResults');
+        let found = false;
+
+        for (let i = 1; i < tr.length; i++) {
+            let td = tr[i].getElementsByTagName('td')[1];
+            if (td) {
+                let textValue = td.textContent || td.innerText;
+                if (textValue.toLowerCase().indexOf(input) > -1) {
+                    tr[i].style.display = '';
+                    found = true;
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+        noResults.style.display = found ? 'none' : 'block';
+    }
+</script>
 
 </body>
 </html>
