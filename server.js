@@ -8,7 +8,7 @@ const port = 3000;
 // Middleware to parse JSON
 app.use(bodyParser.json());
 
-// Connect to MongoDB (Replace with your MongoDB connection string)
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/Data-engineering', {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -48,6 +48,16 @@ app.post('/submit-reservation', async (req, res) => {
         res.status(200).send('Reservation saved successfully!');
     } catch (error) {
         res.status(500).send('Error saving reservation');
+    }
+});
+
+// GET route to retrieve reservation data
+app.get('/get-reservations', async (req, res) => {
+    try {
+        const reservations = await Reservation.find();
+        res.status(200).json(reservations);
+    } catch (error) {
+        res.status(500).send('Error retrieving reservations');
     }
 });
 

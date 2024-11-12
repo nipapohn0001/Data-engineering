@@ -37,51 +37,48 @@
         </form>
     </div>
     
-
     <script>
-        document.querySelector('form').addEventListener('submit', function (event) {
-            event.preventDefault();  // Prevent the default form submission
-
-            // Get form values
-            const borrower_id = document.getElementById('borrower_id').value;
-            const fullname_borrower = document.getElementById('fullname_borrower').value;
-            const book_title = document.getElementById('book-title').value;
-            const book_id = document.getElementById('book-id').value;
-            const author_name = document.getElementById('author-name').value;
-            const date_borrowed = document.getElementById('date-borrowed').value;
-            const due_date_returned = document.getElementById('duedate-returned').value;
-
-            // Create the data object
-            const reservationData = {
+        const form = document.getElementById('reservationForm');
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+    
+          const borrower_id = document.getElementById('borrower_id').value;
+          const fullname_borrower = document.getElementById('fullname_borrower').value;
+          const book_title = document.getElementById('book_title').value;
+          const book_id = document.getElementById('book_id').value;
+          const author_name = document.getElementById('author_name').value;
+          const date_borrowed = document.getElementById('date_borrowed').value;
+          const due_date_returned = document.getElementById('due_date_returned').value;
+    
+          try {
+            const response = await fetch('/submit-reservation', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
                 borrower_id,
                 fullname_borrower,
-                book_id,
                 book_title,
+                book_id,
                 author_name,
                 date_borrowed,
                 due_date_returned
-            };
-
-            // Send data to the server using fetch API
-            fetch('http://localhost:3000/submit-reservation', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(reservationData)
-            })
-                .then(response => response.json())
-                .then(data => {
-                    alert('Reservation saved successfully!');
-                    document.querySelector('form').reset();
-                })
-                .catch(error => {
-                    alert('Error saving reservation!');
-                    console.error('Error:', error);
-                });
+              })
+            });
+    
+            if (response.ok) {
+              alert('Reservation saved successfully!');
+              form.reset();
+            } else {
+              alert('Error saving reservation. Please try again.');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+          }
         });
-
-    </script>
+      </script>
 
 </body>
 

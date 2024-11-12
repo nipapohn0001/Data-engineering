@@ -21,31 +21,34 @@
     </section>
 
     <script>
-        // Load reservations from LocalStorage and display them
-        window.onload = function() {
-            const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+        async function fetchReservations() {
+          try {
+            const response = await fetch('/get-reservations');
+            const reservations = await response.json();
+    
             const reservationList = document.getElementById('reservation-list');
-
-            if (reservations.length === 0) {
-                reservationList.innerHTML = '<p>No reservations found.</p>';
-            } else {
-                reservations.forEach(reservation => {
-                    const reservationDiv = document.createElement('div');
-                    reservationDiv.classList.add('reservation-item');
-                    reservationDiv.innerHTML = `
-                        <p><strong>Borrower ID:</strong> ${reservation.borrower_id}</p>
-                        <p><strong>Name:</strong> ${reservation.fullname_borrower}</p>
-                        <p><strong>Book Title:</strong> ${reservation.booktitle}</p>
-                        <p><strong>Book ID:</strong> ${reservation.book_id}</p>
-                        <p><strong>Author:</strong> ${reservation.author}</p>
-                        <p><strong>Date Borrowed:</strong> ${reservation.dateborrowed}</p>
-                        <p><strong>Due Date:</strong> ${reservation.duedatereturned}</p>
-                        <hr>
-                    `;
-                    reservationList.appendChild(reservationDiv);
-                });
-            }
-        };
-    </script>
+            reservationList.innerHTML = '';
+    
+            reservations.forEach((reservation) => {
+              const reservationElement = document.createElement('div');
+              reservationElement.innerHTML = `
+                <p>Borrower ID: ${reservation.borrower_id}</p>
+                <p>Full Name: ${reservation.fullname_borrower}</p>
+                <p>Book Title: ${reservation.book_title}</p>
+                <p>Book ID: ${reservation.book_id}</p>
+                <p>Author: ${reservation.author_name}</p>
+                <p>Reservation Date: ${reservation.date_borrowed}</p>
+                <p>Returned Date: ${reservation.due_date_returned}</p>
+              `;
+              reservationList.appendChild(reservationElement);
+            });
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+          }
+        }
+    
+        fetchReservations();
+      </script>
 </body>
 </html>
