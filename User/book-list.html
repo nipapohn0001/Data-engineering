@@ -4,44 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Book List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
-            margin: 0;
-            padding: 100px;
-            color: #333;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        li:last-child {
-            border-bottom: none;
-        }
-    </style>
+    <title>Book List</title>
+    <link rel="stylesheet" href="/css/add-book.css">
 </head>
 
 <body>
@@ -77,7 +41,7 @@
                     <div class="sidebar-content">
                         <ul class="lists">
                             <li class="list">
-                                <a href="/Admin/book-list-admin.html" class="nav-link">
+                                <a href="/User/book-list.html" class="nav-link">
                                     <i class="bx bx-home-alt icon"></i>
                                     <span class="link">Book List</span>
                                 </a>
@@ -89,7 +53,7 @@
                                 </a>
                             </li>
                             <li class="list">
-                                <a href="/Overdue-book.html" class="nav-link">
+                                <a href="/Admin/Overdue-book.html" class="nav-link">
                                     <i class="bx bx-bell icon"></i>
                                     <span class="link">Overdue book</span>
                                 </a>
@@ -146,17 +110,27 @@
         </html>
     </nav>
 
-    <div class="container">
-        <h2>Admin Book List</h2>
-        <ul>
-            <li>Book 1: Advanced Programming in Python</li>
-            <li>Book 2: Database Management for Admins</li>
-            <li>Book 3: Network Security Essentials</li>
-            <li>Book 4: IT Project Management</li>
-            <!-- Add more books here for admins -->
-        </ul>
-    </div>
+    <h1 style="margin-top: 100px; text-align: center;">Book List</h1>
 
+    <!-- ปุ่มเพิ่มหนังสือ -->
+    <!-- <button onclick="location.href='add-book.html'">Add New Book</button> -->
+
+    <!-- ตารางแสดงรายการหนังสือ -->
+    <table id="bookTable">
+        <thead>
+            <tr>
+                <th>Book Code</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Subject</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- หนังสือทั้งหมดจะแสดงที่นี่ -->
+        </tbody>
+    </table>
+
+    <script src="/js/book-list.js"></script>
 </body>
 
 </html>
