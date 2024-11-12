@@ -12,19 +12,19 @@
     <div class="container">
         <h2>Reserve a Book</h2>
         <form action="submit-reservation" method="POST">
-            <label for="book-id">Book ID:</label>
+            <label for="book-id">Borrower ID:</label>
             <input type="text" id="book-id" name="book-id" required>
 
-            <label for="book-title">Book Title:</label>
+            <label for="book-title">Full Name:</label>
             <input type="text" id="book-title" name="book-title" required>
 
-            <label for="author-name">Author Name:</label>
+            <label for="author-name">Book Title:</label>
             <input type="text" id="author-name" name="author-name" rfequired>
 
             <label for="borrower_id">Book ID:</label>
             <input type="text" id="borrower_id" name="borrower_id" required>
 
-            <label for="fullname_borrower">Full Name:</label>
+            <label for="fullname_borrower">Author:</label>
             <input type="text" id="fullname_borrower" name="fullname_borrower" required>
 
             <label for="date-borrowed">Reservation Date:</label>
@@ -36,38 +36,7 @@
             <button type="submit">Reserve Now</button>
         </form>
     </div>
-    <script>
-        function saveReservation() {
-            // Get form values
-            const borrower_id = document.getElementById('borrower_id').value;
-            const fullname_borrower = document.getElementById('fullname_borrower').value;
-            const booktitle = document.getElementById('booktitle').value;
-            const book_id = document.getElementById('book_id').value;
-            const author = document.getElementById('author').value;
-            const dateborrowed = document.getElementById('dateborrowed').value;
-            const duedatereturned = document.getElementById('duedatereturned').value;
-
-            // Create an object to store
-            const reservation = {
-                borrower_id,
-                fullname_borrower,
-                booktitle,
-                book_id,
-                author,
-                dateborrowed,
-                duedatereturned
-            };
-
-            // Save to LocalStorage
-            let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
-            reservations.push(reservation);
-            localStorage.setItem('reservations', JSON.stringify(reservations));
-
-            alert('Reservation Saved!');
-            // Optionally, reset the form or redirect
-            document.getElementById('reserve-form').reset();
-        }
-    </script>
+    
 
     <script>
         document.querySelector('form').addEventListener('submit', function (event) {

@@ -9,7 +9,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // Connect to MongoDB (Replace with your MongoDB connection string)
-mongoose.connect('mongodb://localhost:27017/bookreservations', {
+mongoose.connect('mongodb://localhost:27017/Data-engineering', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
