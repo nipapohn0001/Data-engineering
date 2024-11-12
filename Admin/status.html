@@ -1,209 +1,36 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สถานะการยืม/คืนหนังสือ</title>
-    <style>
-        /* CSS สำหรับ Navbar */
-        .navbar {
-            display: flex;
-            justify-content: space-around;
-            background-color: #333;
-            padding: 1rem;
-        }
-
-        .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-        }
-
-        .navbar a:hover {
-            background-color: #575757;
-            border-radius: 4px;
-        }
-
-        /* CSS สำหรับตาราง */
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
+    <title>Book Status</title>
+    <link rel="stylesheet" href="/css/status.css">
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav>
-        <!DOCTYPE html>
-        <!-- Coding By CodingNepal - codingnepalweb.com -->
-        <html lang="en">
-
-        <head>
-            <meta charset="UTF-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-            <title>Sidebar Menu | Side Navigation Bar</title>
-            <!-- CSS -->
-            <link rel="stylesheet" href="/css/navbar.css" />
-            <!-- Boxicons CSS -->
-            <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-        </head>
-
-        <body>
-            <nav>
-                <div class="logo">
-                    <i class="bx bx-menu menu-icon"></i>
-                    <span class="logo-name">Library Management System</span>
-                </div>
-                <div class="sidebar">
-                    <div class="logo">
-                        <i class="bx bx-menu menu-icon"></i>
-                        <span class="logo-name"></span>
-                    </div>
-
-                    <div class="sidebar-content">
-                        <ul class="lists">
-                            <li class="list">
-                                <a href="/User/book-list.html" class="nav-link">
-                                    <i class="bx bx-home-alt icon"></i>
-                                    <span class="link">Book List</span>
-                                </a>
-                            </li>
-                            <li class="list">
-                                <a href="/Admin/add-book.html" class="nav-link">
-                                    <i class="bx bx-bar-chart-alt-2 icon"></i>
-                                    <span class="link">Add Book</span>
-                                </a>
-                            </li>
-                            <li class="list">
-                                <a href="/Admin/Overdue-book.html" class="nav-link">
-                                    <i class="bx bx-bell icon"></i>
-                                    <span class="link">Overdue book</span>
-                                </a>
-                            </li>
-                            <li class="list">
-                                <a href="/Admin/status.html" class="nav-link">
-                                    <i class="bx bx-message-rounded icon"></i>
-                                    <span class="link">Status</span>
-                                </a>
-                            </li>
-                            <li class="list">
-                                <a href="/history.html" class="nav-link">
-                                    <i class="bx bx-pie-chart-alt-2 icon"></i>
-                                    <span class="link">History</span>
-                                </a>
-                            </li>
-                            <!-- <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-heart icon"></i>
-                <span class="link">Likes</span>
-              </a>
-            </li>
-            <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-folder-open icon"></i>
-                <span class="link">Files</span>
-              </a>
-            </li> -->
-                        </ul>
-
-                        <div class="bottom-cotent">
-                            <!-- <li class="list">
-              <a href="#" class="nav-link">
-                <i class="bx bx-cog icon"></i>
-                <span class="link">Settings</span>
-              </a>
-            </li> -->
-                            <li class="list">
-                                <a href="/login2.html" class="nav-link">
-                                    <i class="bx bx-log-out icon"></i>
-                                    <span class="link">Logout</span>
-                                </a>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <section class="overlay"></section>
-
-            <script src="/js/navbar.js"></script>
-        </body>
-
-        </html>
-    </nav>
-
-    <!-- เนื้อหาสถานะการยืม/คืนหนังสือ -->
-    <div class="container">
-        <h1>สถานะการยืม/คืนหนังสือ</h1>
+    <h1>Book Borrow and Return Status</h1>
+    <div class="reservation-info">
+        <h1>Reservation Status</h1>
         <table id="statusTable">
             <thead>
                 <tr>
-                    <th>ชื่อหนังสือ</th>
-                    <th>ผู้ยืม</th>
-                    <th>สถานะ</th>
-                    <th>วันที่ยืม</th>
-                    <th>วันที่คืน</th>
+                    <th>Book Name</th>
+                    <th>Borrower Name</th>
+                    <th>Email</th>
+                    <th>Reservation Date</th>
+                    <th>Return Date</th>
+                    <th>Status</th>
+                    <th>Return</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- รายการข้อมูลจะถูกเพิ่มโดย JavaScript -->
+                <!-- Rows will be dynamically generated -->
             </tbody>
         </table>
-    </div>
+    </div>    
 
-    <script>
-        // ตัวอย่างข้อมูลสถานะการยืม/คืน
-        const borrowStatusData = [
-            { title: "หนังสือ A", borrower: "สมชาย", status: "ยืม", borrowDate: "2024-10-01", returnDate: "" },
-            { title: "หนังสือ B", borrower: "สมหญิง", status: "คืน", borrowDate: "2024-09-20", returnDate: "2024-10-05" },
-            { title: "หนังสือ C", borrower: "สมปอง", status: "ยืม", borrowDate: "2024-11-01", returnDate: "" },
-        ];
-
-        // ฟังก์ชันแสดงสถานะการยืม/คืน
-        function displayBorrowStatus() {
-            const tbody = document.getElementById('statusTable').getElementsByTagName('tbody')[0];
-            tbody.innerHTML = '';
-
-            borrowStatusData.forEach((record) => {
-                const row = tbody.insertRow();
-
-                row.insertCell(0).innerText = record.title;
-                row.insertCell(1).innerText = record.borrower;
-                row.insertCell(2).innerText = record.status;
-                row.insertCell(3).innerText = record.borrowDate;
-                row.insertCell(4).innerText = record.returnDate || '-';
-            });
-        }
-
-        // เรียกฟังก์ชันแสดงข้อมูลเมื่อโหลดหน้า
-        displayBorrowStatus();
-    </script>
+    <script src="/js/status.js"></script>
 </body>
 
 </html>

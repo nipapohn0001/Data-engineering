@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
-    <link rel="stylesheet" href="/css/book-list.css">
+    <title>Reservation Information</title>
+    <link rel="stylesheet" href="/css/reservation-info.css">
+    <!-- <script src="/js/navbar.js"></script> -->
 </head>
 
 <body>
-
     <nav>
         <!DOCTYPE html>
         <!-- Coding By CodingNepal - codingnepalweb.com -->
@@ -110,50 +110,25 @@
         </html>
     </nav>
 
-    <h1 style="margin-top: 100px; text-align: center;">Book List</h1>
+    <h1 style="margin-top: 100px; text-align: center;">Reservation Information</h1>
 
-    <!-- ช่องค้นหาหนังสือ -->
-    <input type="text" id="searchBar" placeholder="Search for a book..."
-        style="margin: 20px; padding: 10px; width: 200px;">
-
-    <!-- ตารางแสดงรายการหนังสือ -->
-    <table id="bookTable">
+    <!-- Table to show reservations -->
+    <table id="reservationTable">
         <thead>
             <tr>
-                <th>Book Code</th>
                 <th>Book Name</th>
-                <th>Author</th>
-                <th>Subject</th>
-                <th>Status</th> <!-- คอลัมน์ใหม่สำหรับแสดงสถานะการจอง -->
-                <th>Reserve</th> <!-- คอลัมน์ใหม่สำหรับปุ่มจอง -->
+                <th>Reserver Name</th>
+                <th>Email</th>
+                <th>Reservation Date</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            <!-- หนังสือทั้งหมดจะแสดงที่นี่ -->
+            <!-- Reservation data will be injected here -->
         </tbody>
     </table>
 
-    <!-- ป๊อปอัพฟอร์มสำหรับกรอกข้อมูลผู้จอง -->
-    <div id="reservePopup" class="popup">
-        <div class="popup-content">
-            <h2>Book Reservation</h2>
-            <form id="reserveForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" required><br>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" required><br>
-
-                <label for="reservationDate">Reservation Date:</label>
-                <input type="date" id="reservationDate" required><br>
-
-                <button type="submit">Confirm Reservation</button>
-                <button type="button" onclick="closePopup()">Cancel</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="/js/book-list.js"></script>
+    <script src="/js/reserve-info.js"></script>
 </body>
 
 </html>
