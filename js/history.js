@@ -1,7 +1,7 @@
-// Fetch and display reservation history from localStorage
+// Function to render reservation history from localStorage
 function renderHistory() {
     const historyTableBody = document.querySelector('#historyTable tbody');
-    historyTableBody.innerHTML = ''; // Clear previous data
+    historyTableBody.innerHTML = ''; // Clear previous records
 
     const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
@@ -10,13 +10,13 @@ function renderHistory() {
         row.innerHTML = `
             <td>${reservation.bookName}</td>
             <td>${reservation.name}</td>
-            <td>${reservation.email}</td>
             <td>${reservation.reservationDate}</td>
+            <td>${reservation.returnDate}</td>
             <td>${reservation.status}</td>
         `;
         historyTableBody.appendChild(row);
     });
 }
 
-// Load history on page load
+// Render the history when the page loads
 window.onload = renderHistory;

@@ -1,6 +1,5 @@
 // Function to confirm the return of a book
 function confirmReturn(index) {
-    // Retrieve the current data from localStorage
     const books = JSON.parse(localStorage.getItem('books')) || [];
     const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
@@ -34,17 +33,47 @@ function confirmReturn(index) {
     }
 }
 
-// Function to render the status table
+// Function to handle payment for overdue books
+function handlePayment(index) {
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+
+    // Check if the reservation exists
+    if (reservations[index]) {
+        // Update the payment status
+        reservations[index].paymentStatus = 'Paid';
+
+        // Update localStorage with the modified reservations
+        localStorage.setItem('reservations', JSON.stringify(reservations));
+
+        // Refresh the status table display
+        renderStatusTable();
+        alert("Payment has been made. You can now return the book.");
+    }
+}
+
 function renderStatusTable() {
     const statusTableBody = document.querySelector('#statusTable tbody');
     statusTableBody.innerHTML = ''; // Clear existing rows
 
-    // Retrieve reservations data from localStorage
+    // ดึงข้อมูลการจองจาก localStorage
     const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    console.log(reservations);  // ตรวจสอบข้อมูลใน console
 
-    // Populate table rows with current reservation data
+    const today = new Date().toISOString().split('T')[0]; // Get today's date in yyyy-mm-dd format
+
+    // ถ้าไม่มีข้อมูลการจอง ให้แสดงข้อความว่าไม่มีการจอง
+    if (reservations.length === 0) {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td colspan="7" style="text-align:center;">No reservations found</td>`;
+        statusTableBody.appendChild(row);
+        return;
+    }
+
+    // Loop through the reservations and display them in the table
     reservations.forEach((reservation, index) => {
         const row = document.createElement('tr');
+        const isOverdue = reservation.returnDate < today && reservation.paymentStatus !== 'Paid';
+
         row.innerHTML = `
             <td>${reservation.bookName}</td>
             <td>${reservation.name}</td>
@@ -53,14 +82,15 @@ function renderStatusTable() {
             <td>${reservation.returnDate}</td>
             <td>${reservation.status}</td>
             <td>
-                <button onclick="confirmReturn(${index})">
-                    Return Book
-                </button>
+                ${isOverdue ? 
+                    `<button onclick="handlePayment(${index})">Pay for Overdue</button>` : 
+                    `<button onclick="confirmReturn(${index})">Return Book</button>`
+                }
             </td>
         `;
         statusTableBody.appendChild(row);
     });
 }
 
-// Call renderStatusTable when page loads
 document.addEventListener("DOMContentLoaded", renderStatusTable);
+
