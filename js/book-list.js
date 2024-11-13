@@ -278,3 +278,29 @@ function openReservationForm(index) {
     };
 }
 
+function renderBookList() {
+    const bookTableBody = document.querySelector('#bookTable tbody');
+    bookTableBody.innerHTML = ''; // ล้างข้อมูลเก่าก่อน
+    const books = JSON.parse(localStorage.getItem('books')) || [];
+
+    books.forEach((book, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${book.code}</td>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.subject}</td>
+            <td>${book.reserved ? 'Reserved' : 'Available'}</td>
+            <td>
+                <button onclick="openReservationForm(${index})" ${book.reserved ? 'disabled' : ''}>
+                    ${book.reserved ? 'Reserved' : 'Reserve'}
+                </button>
+            </td>
+        `;
+        bookTableBody.appendChild(row);
+    });
+}
+
+// แสดงรายการหนังสือเมื่อโหลดหน้า
+window.onload = renderBookList;
+

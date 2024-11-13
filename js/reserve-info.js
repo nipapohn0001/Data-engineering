@@ -1,23 +1,31 @@
-// Function to display reservation data from localStorage
-function renderReservationList() {
-    const reservationTableBody = document.querySelector('#reservationTable tbody');
-    reservationTableBody.innerHTML = ''; // Clear previous data
+// Function to display reservation details from localStorage
+function renderReservationInfo() {
+    const reservationDetails = document.querySelector('#reservationTable tbody');
+    reservationDetails.innerHTML = ''; // Clear existing details
 
-    // Retrieve reservation data from localStorage
-    const reservationData = JSON.parse(localStorage.getItem('reservations')) || [];
+    // Get reservation details from localStorage
+    const reservation = JSON.parse(localStorage.getItem('currentReservation'));
 
-    reservationData.forEach((reservation) => {
+    if (reservation) {
+        // If a reservation exists, display the details
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>${reservation.bookName}</td>
             <td>${reservation.name}</td>
-            <td>${reservation.email}</td>
             <td>${reservation.reservationDate}</td>
+            <td>${reservation.returnDate}</td>
             <td>${reservation.status}</td>
         `;
-        reservationTableBody.appendChild(row);
-    });
+        reservationDetails.appendChild(row);
+    } else {
+        // If no reservation, display a message
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td colspan="5" style="text-align: center;">No reservation found.</td>
+        `;
+        reservationDetails.appendChild(row);
+    }
 }
 
-// Call the function to render the reservations when the page loads
-window.onload = renderReservationList;
+// Display reservation info when the page loads
+window.onload = renderReservationInfo;
