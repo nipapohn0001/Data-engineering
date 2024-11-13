@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
-    <link rel="stylesheet" href="/css/add-book.css">
+    <title>Reservation History</title>
+    <link rel="stylesheet" href="/css/history.css">
 </head>
 
 <body>
-
     <nav>
         <!DOCTYPE html>
         <!-- Coding By CodingNepal - codingnepalweb.com -->
@@ -34,62 +33,62 @@
             <div class="sidebar">
                 <div class="logo">
                     <i class="bx bx-menu menu-icon"></i>
-                    <span class="logo-name">Admin</span>
+                    <span class="logo-name">User</span>
                 </div>
 
                 <div class="sidebar-content">
                     <ul class="lists">
                         <li class="list">
-                            <a href="/Admin/book-list-admin.html" class="nav-link">
+                            <a href="/User/book-list-user.html" class="nav-link">
                                 <i class="bx bx-home-alt icon"></i>
                                 <span class="link">Book List</span>
                             </a>
                         </li>
-                        <li class="list">
+                        <!-- <li class="list">
                             <a href="/Admin/add-book.html" class="nav-link">
                                 <i class="bx bx-bar-chart-alt-2 icon"></i>
                                 <span class="link">Add Book</span>
                             </a>
-                        </li>
-                        <!-- <li class="list">
-                            <a href="/Admin/Overdue-book.html" class="nav-link">
-                                <i class="bx bx-bell icon"></i>
-                                <span class="link">Overdue book</span>
-                            </a>
                         </li> -->
+                        <!-- <li class="list">
+                    <a href="/Admin/Overdue-book.html" class="nav-link">
+                        <i class="bx bx-bell icon"></i>
+                        <span class="link">Overdue book</span>
+                    </a>
+                </li> -->
                         <li class="list">
-                            <a href="/Admin/status-admin.html" class="nav-link">
+                            <a href="/User/status-user.html" class="nav-link">
                                 <i class="bx bx-message-rounded icon"></i>
                                 <span class="link">Status</span>
                             </a>
                         </li>
                         <li class="list">
-                            <a href="/Admin/history-admin.html" class="nav-link">
+                            <a href="/history.html" class="nav-link">
                                 <i class="bx bx-pie-chart-alt-2 icon"></i>
                                 <span class="link">History</span>
                             </a>
                         </li>
                         <!-- <li class="list">
-                            <a href="/User/reserve-info.html" class="nav-link">
-                                <i class="bx bx-heart icon"></i>
-                                <span class="link">Reservation Information</span>
-                            </a>
-                        </li> -->
+                    <a href="/User/reserve-info.html" class="nav-link">
+                        <i class="bx bx-heart icon"></i>
+                        <span class="link">Reservation Information</span>
+                    </a>
+                </li> -->
                         <!-- <li class="list">
-                            <a href="#" class="nav-link">
-                                <i class="bx bx-folder-open icon"></i>
-                                <span class="link">Files</span>
-                            </a>
-                        </li> -->
+                    <a href="#" class="nav-link">
+                        <i class="bx bx-folder-open icon"></i>
+                        <span class="link">Files</span>
+                    </a>
+                </li> -->
                     </ul>
 
                     <div class="bottom-cotent">
                         <!-- <li class="list">
-          <a href="#" class="nav-link">
-            <i class="bx bx-cog icon"></i>
-            <span class="link">Settings</span>
-          </a>
-        </li> -->
+  <a href="#" class="nav-link">
+    <i class="bx bx-cog icon"></i>
+    <span class="link">Settings</span>
+  </a>
+</li> -->
                         <li class="list">
                             <a href="/login2.html" class="nav-link">
                                 <i class="bx bx-log-out icon"></i>
@@ -109,45 +108,24 @@
 </html>
 </nav>
 
-<h1 style="margin-top: 100px; text-align: center;">Book List</h1>
+<h1 style="margin-top: 100px; text-align: center;">Reservation History</h1>
 
-<!-- ปุ่มเปิด Pop-up เพิ่มหนังสือ -->
-<button id="addBookButton">Add New Book</button>
-
-<!-- รายชื่อหนังสือ -->
-<table id="bookTable">
+<!-- History Table -->
+<table id="historyTable">
     <thead>
         <tr>
-            <th>Book Code</th>
             <th>Book Name</th>
-            <th>Author</th>
-            <th>Subject</th>
-            <th>Actions</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Reservation Date</th>
         </tr>
     </thead>
     <tbody>
-        <!-- รายการหนังสือจะแสดงที่นี่ -->
+        <!-- Reservation history will be displayed here -->
     </tbody>
 </table>
 
-<!-- Pop-up สำหรับเพิ่ม/แก้ไขหนังสือ -->
-<div id="popupForm" class="popup">
-    <div class="popup-content">
-        <h2 id="popupTitle">Add Book</h2>
-        <label for="bookCode">Book Code</label>
-        <input type="text" id="bookCode" required>
-        <label for="bookName">Book Name</label>
-        <input type="text" id="bookName" required>
-        <label for="author">Author</label>
-        <input type="text" id="author" required>
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" required>
-        <button id="saveBook">Save Book</button>
-        <button id="closePopup">Close</button>
-    </div>
-</div>
-
-<script src="/js/add-book.js"></script>
+<script src="/js/history.js"></script>
 </body>
 
 </html>

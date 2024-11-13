@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book List</title>
-    <link rel="stylesheet" href="/css/add-book.css">
+    <title>Book Status</title>
+    <link rel="stylesheet" href="/css/status.css">
 </head>
 
 <body>
-
     <nav>
         <!DOCTYPE html>
         <!-- Coding By CodingNepal - codingnepalweb.com -->
@@ -108,46 +107,28 @@
 
 </html>
 </nav>
-
-<h1 style="margin-top: 100px; text-align: center;">Book List</h1>
-
-<!-- ปุ่มเปิด Pop-up เพิ่มหนังสือ -->
-<button id="addBookButton">Add New Book</button>
-
-<!-- รายชื่อหนังสือ -->
-<table id="bookTable">
-    <thead>
-        <tr>
-            <th>Book Code</th>
-            <th>Book Name</th>
-            <th>Author</th>
-            <th>Subject</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- รายการหนังสือจะแสดงที่นี่ -->
-    </tbody>
-</table>
-
-<!-- Pop-up สำหรับเพิ่ม/แก้ไขหนังสือ -->
-<div id="popupForm" class="popup">
-    <div class="popup-content">
-        <h2 id="popupTitle">Add Book</h2>
-        <label for="bookCode">Book Code</label>
-        <input type="text" id="bookCode" required>
-        <label for="bookName">Book Name</label>
-        <input type="text" id="bookName" required>
-        <label for="author">Author</label>
-        <input type="text" id="author" required>
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" required>
-        <button id="saveBook">Save Book</button>
-        <button id="closePopup">Close</button>
-    </div>
+<h1>Book Borrow and Return Status</h1>
+<div class="reservation-info">
+    <h1>Reservation Status</h1>
+    <table id="statusTable">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Borrower Name</th>
+                <th>Email</th>
+                <th>Reservation Date</th>
+                <th>Return Date</th>
+                <th>Status</th>
+                <th>Action</th> <!-- ปรับคอลัมน์ Action -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically generated -->
+        </tbody>
+    </table>
 </div>
 
-<script src="/js/add-book.js"></script>
+<script src="/js/status-admin.js"></script>
 </body>
 
 </html>

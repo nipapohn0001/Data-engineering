@@ -156,7 +156,7 @@ function openReservationForm(index) {
 
         // ปิดป๊อปอัพและไปที่หน้าแสดงข้อมูลการจอง
         closePopup();
-        window.location.href = '/Admin/status.html';
+        window.location.href = '/User/status-user.html';
     };
 }
 
@@ -214,7 +214,7 @@ function openReservationForm(index) {
         // Notify the user and close the popup
         alert(`You have reserved the book: ${book.name} by ${book.author}`);
         closePopup();
-        window.location.href = '/Admin/status.html'; // Redirect to reservation info page
+        window.location.href = '/User/status-user.html'; // Redirect to reservation info page
     };
 }
 
@@ -274,7 +274,7 @@ function openReservationForm(index) {
         // Notify the user and close the popup
         alert(`You have reserved the book: ${book.name} by ${book.author}. It is due on ${returnDate}.`);
         closePopup();
-        window.location.href = '/Admin/status.html'; // Redirect to reservation info page
+        window.location.href = '/User/status-user.html'; // Redirect to reservation info page
     };
 }
 
